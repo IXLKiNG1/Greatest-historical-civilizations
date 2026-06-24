@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> موسوعة الحضارات القديمة </title>
+
+    <link rel="icon" href="https://copilot.microsoft.com/th/id/BCO.06f54f8e-1477-4570-9c8a-cd95664e0c8e.png">
+
+
+
+
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #2a1810 0%, #4a2c17 50%, #2a1810 100%);
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 3px solid #daa520;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأثير ذهبي خلفي */
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(218,165,32,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 0 30px rgba(255,215,0,0.5));
+            transition: transform 0.5s;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #daa520;
+            text-decoration: underline;
+            text-decoration-color: #daa520;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: #1a1a1a;
+            padding: 20px;
+            border-top: 2px solid #daa520;
+            border-bottom: 2px solid #daa520;
+            position: relative;
+            z-index: 1;       
+            text-align: center;  
+        }
+
+        nav a {
+            display: inline-block;
+            color: #daa520;
+            margin: 10px 15px;
+            padding: 12px 25px;
+            text-decoration: none;
+            border: 2px solid #daa520;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.5);
+        }
+
+        nav a:hover {
+            background: #eec12c;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(138, 86, 86, 0.452);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px rgba(196, 196, 68, 0.3);
+        }
+
+        /* ===== CIVILIZATIONS GRID ===== */
+        .civilizations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .civ-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(218,165,32,0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .civ-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(218,165,32,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .civ-card:hover::before {
+            opacity: 1;
+        }
+
+        .civ-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(218,165,32,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .civ-card img {
+            width: 200px;       /* ضبط العرض */
+            height: 200px;      /* ضبط الطول */
+            object-fit: cover;  /* يضمن تناسق الصورة داخل الإطار */
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(255,215,0,0.3));
+            transition: transform 0.3s;
+        }
+
+        .civ-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .civ-card h3 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .civ-card p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .civ-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: #daa520;
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .civ-link:hover {
+            background: #ffd700;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255,215,0,0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 30px;
+            border-top: 2px solid #daa520;
+            color: #daa520;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            nav a { display: block; margin: 5px 0; }
+            .civilizations-grid { grid-template-columns: 1fr; }
+        }
+</style>
+
+
+</head>
+
+
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <img src="https://copilot.microsoft.com/th/id/BCO.6b8f28bb-b620-4bc2-8b30-cbabd5c244f8.png" alt="رمز الحضارات القديمة">
+        </div>
+        <h1>🏛️ موسوعة الحضارات القديمة</h1>
+        <p class="subtitle"><b>استعد لرحلة مشوقة بين الحضارات العظيمة</b></p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav >
+         
+         <a href="syr.html" title=" الانتقال الى صفحة حضارة بلاد الشام "  
+         name="syr"> الحضارة السورية </a>
+        
+               
+         
+         <a href="irq.html" title=" الانتقال الى صفحة حضارة بلاد الرافدين "  
+         name="irq"> الحضارة العراقية   </a>
+        
+                    
+         <a href="egy.html" title="الانتقال الى صفحة الحضاره المصرية القديمة"  
+         name="egy"> الحضارة المصرية </a>
+        
+        
+                   <br \>
+         
+         
+         <a href="usa.html" title=" الانتقال الى صفحة حضارات أمريكا الوسطى و الجنوبية " 
+         name="usa"> حضارات أمريكا الجنوبية </a> 
+                  
+         
+         <a href="med.html" title="الانتقال الى صفحة حضارات حوض البحر الابيض"   
+         name="med"> حضارات البحر الأبيض </a>  
+        
+                 
+         <a href="prc.html"  title=" الانتقال الى صفحة الحضاره الصينية "  
+         name="prc"> الحضارة الصينية </a>
+        
+        
+     </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <h2 class="section-title">✨ اكتشف الحضارات</h2>
+        
+        <div class="civilizations-grid">
+            
+            <!-- Levant -->
+            <div class="civ-card">
+                <a href="syr.html"><img src="img/choices syr.png" alt="الحضارة السورية"></a>
+                               <!--   class="civ-link" -->
+                <h3> حضارة بلاد الشام </h3>
+                <p> مِنْ رَحمِ أقدم العواصم المأهولة، وعلى وقع خطى القوافل فوق طريق الحرير، طبعت سوريا هويتها كملتقى للحضارات وجسر يربط الشرق بالغرب. بدأت هذه المسيرة منذ فجر التاريخ؛ حيث أهدت أرضها للبشرية أول أبجدية مكتوبة في التاريخ (أوغاريت)، ثم تحولت إلى مركز تجاري وثقافي نابض في عهد الرومان، وصولاً إلى العصر الإسلامي عندما أصبحت دمشق عاصمة الدولة الأموية وقادت العالم علماً وحضارة</p>
+              <!-- <a href="syr.html"  class="civ-link"> اكتشف المزيد  →</a>-->
+            </div> 
+
+            <!-- Iraq -->
+            <div class="civ-card">
+                <a href="irq.html"> <img src="img/choices irq.png" alt="حضارة بلاد الرافدين "> </a> 
+                <!-- https://copilot.microsoft.com/th/id/BCO.6476aa02-d110-4f9e-8c99-5b3bf35b05cb.png -->
+                <h3> حضارة بلاد الرافدين </h3>
+                <p> يمتد تاريخ العراق لآلاف السنين، حاملاً بين طياته قصصاً لإمبراطوريات عظيمة وشعوباً تركت بصمة لا تُمحى على وجه العالم القديم والحديث. بدأت هذه المسيرة الاستثنائية مع السومريين والأكديين الذين وضعوا اللبنات الأولى للمدن والكتابة، ثم ازدهرت في العصر البابلي والآشوري عبر القوانين والفتوحات الكبرى، وتوالت عليها الحقب حتى أصبحت بغداد عاصمة الخلافة العباسية ومركز العلوم في العصر الإسلامي، وصولاً إلى العصر الحديث الذي يربط هذا الماضي العريق بالحاضر </p>
+                <!-- <a href="irq.html" class="civ-link">اكتشف المزيد →</a> -->
+            </div>
+
+            <!-- Egypt -->
+            <div class="civ-card">
+              <a href="egy.html"> <img src="img/choices egy.png" alt="الحضارة الفرعونية"> </a>
+                <h3>الحضارة المصرية القديمة</h3>
+                <p> حضارة لم تمت، بل نامت في سلام تحت الرمال لتستيقظ كل يوم وتبهر العالم.. مرحباً بكم في أرض الفراعنة؛ البلد الذي شهد قبل أكثر من 5000 عام توحيد أول مملكة مركزيّة في التاريخ على يد الملك 'مينا'، لتنطلق منها أعظم رحلة بشرية في البناء، والطب، والفلك، ممتدة عبر ثلاثة عصور ذهبية صاغت مجد العالم القديم. واليوم، نفتح معاً صفحات هذا التاريخ العريق لنكتشف كيف أضاءت مصر فجر البشرية </p>
+                <!-- <a href="egy.html" class="civ-link"></a> اكتشف المزيد →</a> -->
+            </div> 
+
+            <!-- South America -->
+            <div class="civ-card">
+               <a href="usa.html"> <img src="img/choices usa.png" alt="حضارات أمريكا الجنوبية "> </a>
+                <h3> حضارات أمريكا الوسطى والجنوبية </h3>
+                <p> لو كان لعيون التماثيل الحجرية أن تبكي، لسكبت دماً على أمجادٍ ابتلعتها الغابة؛ هنا ترقد الإمبراطوريات التي زلزلت الأرض. فبينما رسم المايا حدود السماء، وشيّد الأزتيك والإنكا عروشاً من ذهب، ظن الجميع أن مجدهم أبدي. لكن في لمح البصر، انقلبت الأرض؛ وتبدلت صيحات المحاربين وبريق التيجان في ثوانٍ، بعد أن ابتلعت الأدغال عروش الذهب وجيوش الكبرياء وسط ذهول مباغت، هنا انطفأ اللهب، لتتحول تلك القوى المرعبة إلى اللغز الأكثر إثارة في تاريخ البشرية، يحرسه حجرٌ أصم وصمتٌ لا ينتهي </p>
+
+                <!-- لو كان لعيون التماثيل الحجرية الشاخصة في عتمة الغابة أن تبكي، لسكبت دماً على مجدٍ عاشت تفاصيله؛ هنا في قلب القارة الغامضة، نُبشت قبور الإمبراطوريات التي زلزلت الأرض! تحت وهج النيران المقدسة، صُنعت المعجزات؛ فرسم المايا حدود السماء، وطوّع الأزتيك الجبال، وشقّ الإنكا الصخر بمجدٍ ظنوا أن الشمس قد سُخرت لخدمته للأبد. لكن في لحظة جنون حاسمة، انقلبت الأرض وابتلعت القبور الخضراء في ثوانٍ عروش الذهب، ودماء المحاربين، وجيوش الكبرياء! هنا، انطفأ اللهب، وأسدلت الغابة صمتها المطبق، لتتحول تلك القوى المرعبة إلى اللغز الأكثر إثارة في تاريخ البشرية، يحرسها حجرٌ أصم وغموضٌ لا ينتهي -->
+
+                <!-- لو كان لعيون التماثيل الحجرية أن تبكي، لسكبت دماً على أمجادٍ ابتلعتها الغابة؛ هنا ترقد الإمبراطوريات التي زلزلت الأرض فبينما رسم المايا حدود السماء، وشيّد الأزتيك والإنكا عروشاً من ذهب، ظن الجميع أن مجدهم أبدي. لكن في لمح البصر، انقلبت الأرض وابتلعت الأدغال في ثوانٍ عروش الذهب، ودماء المحاربين، وجيوش الكبرياء! هنا انطفأ اللهب، لتتحول تلك القوى المرعبة إلى اللغز الأكثر إثارة في تاريخ البشرية، يحرسه حجرٌ أصم وصمتٌ لا ينتهي -->
+
+
+
+                <!-- <a href="usa.html" class="civ-link">اكتشف المزيد →</a> -->
+            </div>
+
+            <!-- Mediterranean -->
+            <div class="civ-card">
+                <a href="med.html"> <img src="img/choices med.jpg" alt="حضارات البحر الأبيض"> </a>
+                <h3> حضارات حوض البحر الأبيض المتوسط </h3>
+                <p> لو كان للأمواج أن تتكلم، لصرخت بأسرار العالم الذي ابتلعته؛ هنا في باطن البحر الأبيض المتوسط، ترقد الإمبراطوريات التي هزت الأرض. على هذه الشواطئ، صُنعت المعجزات؛ فصاغ الفراعنة الألغاز، وغزا الفينيقيون البحار، وزلزل الإغريق والرومان الكون بمجدٍ ظنوا أنه أبدي. لكن في لمح البصر، ثار البحر وابتلع في ثوانٍ قصور الذهب وجيوش الكبرياء! هنا، أسدل البحر ستاره الأخير وسحب هذا كله إلى باطنه المظلم، لتتحول تلك القوى المرعبة إلى اللغز الأكبر في تاريخ البشرية، محروسةً بصمت الأعماق </p>
+
+            <!-- لو كان للأمواج أن تتكلم، لصرخت بأسرار العالم الذي ابتلعته؛ هنا في باطن الأبيض المتوسط، ترقد الإمبراطوريات التي هزت الأرض.** على هذه الشواطئ، لم تبنَ مجرد مدن، بل قامت قلاع الفراعنة المليئة بالأسرار الغامضة، وانطلقت سفن الفينيقيين التي قادت البحار بخرائط سرية، وازدهرت علوم الإغريق وقوة الرومان التي قهرت المستحيل. لكن البحر أسدل ستاره الأخير وسحب هذا المجد كله إلى الظلمات، لتصبح تلك القوى العظمى مجرد حكاية غارقة، يحرسها صمت الأعماق -->
+
+            <!-- لو كان للأمواج أن تتكلم، لصرخت بأسرار العالم الذي ابتلعته؛ هنا في باطن الأبيض المتوسط، ترقد الإمبراطوريات التي هزت الأرض. على هذه الشواطئ، تحدّت البشرية المستحيل؛ فصاغ الفراعنة الألغاز، واحتمى الفينيقيون بالبحار، وشيّد الإغريق والرومان مجداً ظنوا أنه لن يفنى. لكن، وفي ليلةٍ غادرتها النجوم، تسلل الذعر إلى القلوب؛ فانشقت الأرض بجنون، لتلتهم المياه صرخات الملايين وتبتلع الذهب، والقصور، والملوك في ثوانٍ معدودة. البحر أسدل ستاره الأخير وسحب هذا المجد كله إلى الظلمات، لتصبح تلك القوى العظمى مجرد حكاية غارقة، يحرسها صمت الأعماق -->
+
+            <!-- لو كان للأمواج أن تتكلم، لصرخت بأسرار العالم الذي ابتلعته؛ هنا في باطن الأبيض المتوسط، ترقد الإمبراطوريات التي هزت الأرض. على هذه الشواطئ، تحدّت البشرية المستحيل؛ فصاغ الفراعنة الألغاز، واحتمى الفينيقيون بالبحار، وشيّد الإغريق والرومان مجداً ظنوا أنه أبدي. لكن في لحظة رعب مفاجئة، انشقت الأرض وابتلعت المياه صرخات الملايين وقصور الملوك في ثوانٍ معدودة. البحر أسدل ستاره الأخير وسحب هذا المجد كله إلى الظلمات، لتصبح تلك القوى العظمى مجرد حكاية غارقة، يحرسها صمت الأعماق -->
+
+            <!-- لو كان للأمواج أن تتكلم، لصرخت بأسرار العالم الذي ابتلعته؛ هنا في باطن البحر الأبيض المتوسط، ترقد الإمبراطوريات التي هزت الأرض، على هذه الشواطئ، صُنعت المعجزات؛ فصاغ الفراعنة الألغاز، وغزا الفينيقيون البحار، وزلزل الإغريق والرومان الكون بمجدٍ ظنوا أنه أبدي. لكن في لمح البصر، ثار البحر وابتلع في ثوانٍ قصور الذهب وجيوش الكبريا. هنا، أسدل البحر ستاره الأخير وسحب هذا كله إلى باطنه المظلم، لتتحول تلك القوى المرعبة إلى اللغز الأكبر في تاريخ البشرية، محروسةً بصمت الأعماق -->
+                
+            
+            <!-- <a href="med.html" class="civ-link">اكتشف المزيد →</a> -->
+
+            </div>
+
+            <!-- China -->
+            <div class="civ-card">
+               <a href="prc.html"> <img src="img/choices prc.png" alt="الحضارة الصينية"> </a>
+                <h3> الحضارة الصينية القديمة </h3>
+                <p> من خيوط الحرير وحبر الورق الأول، نسجت الصين قصة أطول حضارة مستمرة في تاريخ البشرية؛ فخلف سورها العظيم ينام تنين التاريخ، الذي استيقظ اليوم ليقود العالم كما فعل بالأمس. 
+                بدأت هذه المسيرة الأسطورية منذ العصور القديمة على ضفاف النهر الأصفر، حيث تأسست الممالك الأولى ووُلدت الحكمة والكتابة، ثم ازدهرت كإمبراطورية موحدة أبهرت العالم باختراع البوصلة والبارود، وصولاً إلى يومنا هذا، حيث يثبت هذا البلد أن جذوره الضاربة في عمق التاريخ هي سر قوته وصعوده نحو المستقبل </p>
+                <!-- <a href="prc.html" class="civ-link">اكتشف المزيد →</a> -->
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🏛️ موسوعة الحضارات القديمة © 2026</p>
+        <p>جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+
+</html>
